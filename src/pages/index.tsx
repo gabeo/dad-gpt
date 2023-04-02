@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { SignInButton, useUser } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
 
@@ -75,6 +76,12 @@ const AskQuestionComponent = () => {
 };
 
 const Home: NextPage = () => {
+  const { isLoaded: userLoaded, isSignedIn } = useUser();
+
+  if (!userLoaded) {
+    return <div></div>;
+  }
+
   return (
     <>
       <Head>
@@ -85,7 +92,12 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             Dad<span className="text-[hsl(280,100%,70%)]">GPT</span>
           </h1>
-          <AskQuestionComponent />
+          {!isSignedIn && (
+            <div className="flex justify-center rounded-md bg-white py-5 px-20 text-lg text-slate-600">
+              <SignInButton />
+            </div>
+          )}
+          {!!isSignedIn && <AskQuestionComponent />}
         </div>
       </main>
     </>

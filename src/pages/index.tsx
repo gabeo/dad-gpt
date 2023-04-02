@@ -11,7 +11,7 @@ const AskQuestionComponent = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
-  const { mutate, isLoading: isPosting } = api.dadGpt.askMock.useMutation({
+  const { mutate, isLoading: isPosting } = api.dadGpt.ask.useMutation({
     onSuccess: (data) => {
       const answer = data;
       console.log("success", answer);

@@ -12,8 +12,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ClerkProvider {...pageProps}>
       <Head>
         <title>DadGPT</title>
-        <meta name="description" content="💭" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="👨🏻" />
+        <link rel="icon" href="/images/dad.png" />
       </Head>
       <div className="bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         <Toaster position="bottom-center" />

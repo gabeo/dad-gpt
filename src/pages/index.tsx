@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
@@ -10,7 +11,7 @@ const AskQuestionComponent = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
-  const { mutate, isLoading: isPosting } = api.dadGpt.ask.useMutation({
+  const { mutate, isLoading: isPosting } = api.dadGpt.askMock.useMutation({
     onSuccess: (data) => {
       const answer = data;
       console.log("success", answer);
@@ -65,7 +66,14 @@ const AskQuestionComponent = () => {
         </div>
       </div>
       {answer && (
-        <div className="rounded-xl bg-gradient-to-br from-[#9c6ae3] to-[hsl(280,100%,70%)] p-10">
+        <div className="relative rounded-xl border border-purple-600 bg-gradient-to-br from-[#9c6ae3] to-[hsl(280,100%,70%)] p-10">
+          <Image
+            src="/images/dad.png"
+            alt="Profile image"
+            className="bd absolute -top-8 -left-8 border-spacing-4 rounded-full border-2 border-teal-800 bg-teal-500 p-2"
+            width={80}
+            height={80}
+          />
           <div className="flex items-center space-x-4 text-2xl font-bold text-white">
             {answer}
           </div>

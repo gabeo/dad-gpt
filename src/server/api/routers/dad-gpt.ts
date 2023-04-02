@@ -43,8 +43,7 @@ export const dadGptRouter = createTRPCRouter({
         content: z.string().min(3).max(300),
       })
     )
-    .mutation((input) => {
-      const x = [{ content: { text: input } }];
-      return x;
+    .mutation(() => {
+      return "The quick brown fox jumps over the lazy dog.";
     }),
 });

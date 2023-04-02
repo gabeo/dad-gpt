@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { SignInButton, useUser } from "@clerk/nextjs";
+import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
 
@@ -78,26 +78,39 @@ const AskQuestionComponent = () => {
 const Home: NextPage = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
 
-  if (!userLoaded) {
-    return <div></div>;
-  }
-
   return (
     <>
       <Head>
         <title>DadGPT</title>
       </Head>
-      <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+      <nav className="flex h-16 flex-wrap items-center justify-end">
+        {userLoaded && (
+          <div className="mr-5 flex-shrink-0 rounded border-4 border-teal-500 bg-teal-500 py-1 px-2 text-sm text-white hover:border-teal-700 hover:bg-teal-700">
+            {!isSignedIn ? <SignInButton /> : <SignOutButton />}
+          </div>
+        )}
+      </nav>
+      <main className="flex min-h-screen flex-col items-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             Dad<span className="text-[hsl(280,100%,70%)]">GPT</span>
           </h1>
           {!isSignedIn && (
-            <div className="flex justify-center rounded-md bg-white py-5 px-20 text-lg text-slate-600">
-              <SignInButton />
+            <div className="rounded-xl bg-gradient-to-br from-[#9c6ae3] to-[hsl(280,100%,70%)] p-10">
+              <div className="flex items-center space-x-4 text-2xl font-bold text-white">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <p className="text-2xl font-bold text-white">
+                    Ask DadGPT anything!
+                  </p>
+                </div>
+              </div>
             </div>
           )}
-          {!!isSignedIn && <AskQuestionComponent />}
+          {!!isSignedIn && (
+            <>
+              <AskQuestionComponent />
+            </>
+          )}
         </div>
       </main>
     </>

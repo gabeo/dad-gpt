@@ -66,16 +66,18 @@ const AskQuestionComponent = () => {
         </div>
       </div>
       {answer && (
-        <div className="relative rounded-xl border border-purple-600 bg-gradient-to-br from-[#9c6ae3] to-[hsl(280,100%,70%)] p-10">
-          <Image
-            src="/images/dad.png"
-            alt="Profile image"
-            className="bd absolute -top-8 -left-8 border-spacing-4 rounded-full border-2 border-teal-800 bg-teal-500 p-2"
-            width={80}
-            height={80}
-          />
-          <div className="flex items-center space-x-4 text-2xl font-bold text-white">
-            {answer}
+        <div className="p-6">
+          <div className="relative rounded-xl border border-purple-600 bg-gradient-to-br from-[#9c6ae3] to-[hsl(280,100%,70%)] p-10">
+            <Image
+              src="/images/dad.png"
+              alt="Profile image"
+              className="bd absolute -top-8 -left-8 border-spacing-4 rounded-full border-2 border-teal-800 bg-teal-500 p-2"
+              width={80}
+              height={80}
+            />
+            <div className="flex items-center space-x-4 text-2xl font-bold text-white">
+              {answer}
+            </div>
           </div>
         </div>
       )}

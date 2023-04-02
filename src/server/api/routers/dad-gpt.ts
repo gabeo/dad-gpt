@@ -18,17 +18,23 @@ export const dadGptRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ input }) => {
-      const results = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: `In the form of a dad joke, answer: ${input.content}`,
-        max_tokens: 100,
+      const results = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "user",
+            content: `Answer my question with a related dad joke: ${input.content}`,
+          },
+        ],
       });
+
+      console.log("results", results.data.choices);
 
       if (results.data.choices.length === 0) {
         throw new TRPCError({ code: "NOT_FOUND", message: "No results found" });
       }
 
-      return results.data.choices;
+      return results.data.choices[0]?.message?.content;
     }),
   askMock: publicProcedure
     .input(

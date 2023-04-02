@@ -11,7 +11,7 @@ const AskQuestionComponent = () => {
 
   const { mutate, isLoading: isPosting } = api.dadGpt.ask.useMutation({
     onSuccess: (data) => {
-      const answer = data[0]?.text;
+      const answer = data;
       console.log("success", answer);
       if (answer) {
         setAnswer(answer);

@@ -23,7 +23,8 @@ export const dadGptRouter = createTRPCRouter({
         messages: [
           {
             role: "user",
-            content: `Answer my question with a related dad joke: ${input.content}`,
+            // content: `Answer my question with a related dad joke: ${input.content}`,
+            content: `Answer my question and include a pun: ${input.content}`,
           },
         ],
       });

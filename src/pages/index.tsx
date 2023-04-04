@@ -92,6 +92,13 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>DadGPT</title>
+        <meta property="og:title" content="DadGPT - Ask Me Anything" />
+        <meta
+          property="og:description"
+          content="DadGPT is what would happen if AI was trained by your dad. Ask him anything!  Just don't expect a good answer."
+        />
+        <meta property="og:site_name" content="DadGPT" />
+        <meta property="og:image" content="/images/dad.png" />
       </Head>
       <nav className="flex h-16 flex-wrap items-center justify-end">
         {userLoaded && (

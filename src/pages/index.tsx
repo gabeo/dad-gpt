@@ -108,7 +108,7 @@ const AskQuestionComponent = () => {
               width={80}
               height={80}
             />
-            <div className="flex items-center space-x-4 text-2xl font-bold text-white">
+            <div className="flex items-center space-x-4 whitespace-pre-wrap text-2xl font-bold text-white">
               {answer}
             </div>
           </div>

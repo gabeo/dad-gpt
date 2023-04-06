@@ -44,6 +44,25 @@ export const dadGptRouter = createTRPCRouter({
       })
     )
     .mutation(() => {
-      return "The quick brown fox jumps over the lazy dog.";
+      return `
+      Sure, here's a quick Python code to find a prime number: 
+
+      \`\`\`
+      num = int(input("Enter a number: "))
+        
+      if num > 1:
+          for i in range(2, num):
+              if (num % i) == 0:
+                  print(num, "is not a prime number")
+                  break
+          else:
+              print(num, "is a prime number")
+        
+      else:
+          print(num, "is not a prime number")
+      \`\`\`
+      
+      And here's your pun: Why do programmers prefer dark mode? Because light attracts bugs!
+      `;
     }),
 });
